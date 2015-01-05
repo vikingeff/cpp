@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 13:45:50 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/05 21:58:18 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/06 00:05:19 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,37 @@ Contact		add()
 	return men;
 }
 
+int			size_string(std::string str)
+{
+	int			index=0;
+
+	while(str[index]!='\0')
+		index++;
+	return index;
+}
 void		print_info(std::string str)
 {
-	int blank;
-	for (int i=0; i<10; i++)
+	int 		blanks=0;
+	int			size=size_string(str);
+
+	if (size>10)
+	{
+		for (int i=0; i<9; i++)
+			std::cout<<str[i];
+		std::cout<<'.';
+	}
+	else
+	{
+		blanks = 10-size;
+		for (int i=0; i<blanks; i++)
+			std::cout<<" ";
+		for (int i=0; i<size; i++)
+			std::cout<<str[i];
+	}
+	/*for (int i=0; i<10; i++)
 	{
 		blank=0;
+
 		
 		if (str[i]!='\0' && blank ==0)
 		{
@@ -87,7 +112,7 @@ void		print_info(std::string str)
 			blank=i;
 			std::cout<<" ";
 		}
-	}
+	}*/
 	std::cout<<'|';
 }
 
@@ -102,7 +127,7 @@ void		search(Contact bbook[], int size)
 		std::cout<<"Who is ?"<<std::endl;
 		for (int i=0; i<size; i++)
 		{
-			std::cout<<"    "<<i+1<<"     |";
+			std::cout<<"         "<<i+1<<"|";
 			print_info(bbook[i].getFirstname());
 			print_info(bbook[i].getLastname());
 			print_info(bbook[i].getNickname());
