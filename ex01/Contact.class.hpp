@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 12:23:20 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/05 18:34:07 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/06 01:21:07 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ public:
 	std::string		getDarkest_secret(void) const;
 	void			setDarkest_secret(std::string str);
 	void			printContact();
+	static int		getNbContact(void);
 
 private:
+	static int	_nbContact;
 	std::string _lastname;
 	std::string _firstname;
 	std::string _nickname;

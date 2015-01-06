@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 13:45:50 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/06 00:05:19 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/06 01:35:12 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ int			main()
 			std::cout<<"you just created entry for : "<<book[size_book-1].getFirstname()<<" "<<book[size_book-1].getLastname()<<std::endl;
 			code = 3;
 		}
-		std::cout<<"Your phonebook countains "<<size_book<<" elements."<<std::endl;
+		std::cout<<size_book<<"/"<<Contact::getNbContact()-1<<" Contact in memory."<<std::endl;
 		std::cout<<"What do you want to do ?"<<std::endl;
 		std::cout<<"Type a command in the following list : ADD, SEARCH, EXIT"<<std::endl;
 		command = gettext();
@@ -173,7 +173,10 @@ int			main()
 				code = 1;
 			}
 			else
+			{
 				std::cout<<"Your phonebook is full sorry."<<std::endl;
+				code = -5;
+			}
 		}
 		else if (command=="SEARCH")
 		{

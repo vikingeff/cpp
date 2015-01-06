@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/05 12:23:44 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/05 18:36:33 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/06 01:40:12 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ Contact::Contact()
 	this->_favorite_meal="";
 	this->_underwear_color="";
 	this->_darkest_secret="";
-	std::cout<<"Contact constructed."<<std::endl;
+	//std::cout<<"Contact constructed."<<std::endl;
+	Contact::_nbContact+=1;
 	return;
 }
 
 Contact::~Contact()
 {
-	std::cout<<"Contact destructed."<<std::endl;
+	//std::cout<<"Contact destructed."<<std::endl;
+	Contact::_nbContact-=1;
 	return;
 }
 
@@ -120,11 +122,11 @@ std::string		Contact::getDarkest_secret(void) const
 {
 	return this->_darkest_secret;
 }
-void		Contact::setDarkest_secret(std::string str)
+void			Contact::setDarkest_secret(std::string str)
 {
 	this->_darkest_secret = str;
 }
-void		Contact::printContact()
+void			Contact::printContact()
 {
 	std::cout<<this->_lastname<<std::endl;
 	std::cout<<this->_firstname<<std::endl;;
@@ -138,3 +140,10 @@ void		Contact::printContact()
 	std::cout<<this->_underwear_color<<std::endl;;
 	std::cout<<this->_darkest_secret<<std::endl;;
 }
+
+int				Contact::getNbContact(void)
+{
+	return Contact::_nbContact;
+}
+
+int				Contact::_nbContact = 0;
