@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 13:44:22 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/06 17:54:44 by gleger           ###   ########.fr       */
+/*   Created: 2015/01/06 13:42:49 by gleger            #+#    #+#             */
+/*   Updated: 2015/01/06 19:40:46 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+
 #include <iostream>
 #include <string>
-#include <Zombie.hpp>
-#include <ZombieEvent.hpp>
 
-int		main(void)
+class Brain
 {
-	Zombie			test;
-	Zombie*			tevent;
-	ZombieEvent		event;
-	Zombie*			random[15];
+public:
+	Brain();
+	~Brain();
 
-	test.setZombietype("undead");
-	test.announce();
-	event.setZombieType("lurker");
-	tevent=event.newZombie("Eyesucker");
-	tevent->announce();
-	for (int i=0; i<15; i++)
-	{
-		random[i]= event.randomChump();
-	}
-	for (int i=0; i<15; i++)
-	{
-		delete (random[i]);
-	}
-	delete tevent;
-	return 0;
-}
+	int				getBrainIQ(void) const;
+	void			setBrainIQ(int level);
+	void			identify();
+	static int		getNbBrains(void);
+
+private:
+	static int		_nbBrains;
+	int				_BrainIQ;
+};
+
+#endif

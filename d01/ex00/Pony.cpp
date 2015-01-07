@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 10:54:07 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/06 12:19:48 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/06 13:53:11 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 Pony::Pony(std::string where)
 {
 	this->_horn_size=0;
-	this->_pony_color="";
+	this->_pony_color=where;
 	this->_catch_phrase="";
 	std::cout<<"Awesome a pony appeared on the "<<where<<"."<<std::endl;
 	Pony::_nbPonies+=1;

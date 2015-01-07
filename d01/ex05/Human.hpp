@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Human.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 13:44:22 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/06 17:54:44 by gleger           ###   ########.fr       */
+/*   Created: 2015/01/06 13:43:44 by gleger            #+#    #+#             */
+/*   Updated: 2015/01/07 08:46:37 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMAN_HPP
+# define HUMAN_HPP
+
 #include <iostream>
 #include <string>
-#include <Zombie.hpp>
-#include <ZombieEvent.hpp>
+#include <Brain.hpp>
 
-int		main(void)
+class Human
 {
-	Zombie			test;
-	Zombie*			tevent;
-	ZombieEvent		event;
-	Zombie*			random[15];
+public:	
+	Human();
+	~Human();
 
-	test.setZombietype("undead");
-	test.announce();
-	event.setZombieType("lurker");
-	tevent=event.newZombie("Eyesucker");
-	tevent->announce();
-	for (int i=0; i<15; i++)
-	{
-		random[i]= event.randomChump();
-	}
-	for (int i=0; i<15; i++)
-	{
-		delete (random[i]);
-	}
-	delete tevent;
-	return 0;
-}
+	void			setZombieType(std::string type);
+	void			randomNames(int nbChumps);
+	static int		getNbHuman(void);
+
+private:
+	static int		_nbHuman;
+	std::string		_zombieType;	
+};
+
+#endif
+
