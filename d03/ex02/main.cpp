@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/06 10:54:33 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 03:07:35 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/09 03:07:42 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <cstdlib>
 #include <FragTrap.class.hpp>
 #include <ScavTrap.class.hpp>
+#include <ClapTrap.class.hpp>
 
 int			define_attack(FragTrap &a, std::string b, int power)
 {
