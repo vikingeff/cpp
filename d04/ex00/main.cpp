@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:43:44 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 16:51:21 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/10 00:50:40 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,17 @@ int		main()
 	Peon			*zog;
 	//Sorcerer robert("Robert", "the Magnificent");
 
-	magic = new Sorcerer("Gerard", "Majax");
+	magic = new Sorcerer("David Schiffer", "Le magicien des temps modernes");
 	puny = new Victim("Harry");
 	zog = new Peon("Yaj");
-	std::cout<<*magic<<std::endl;
-	puny->intro();
+
+	std::cout<<*magic<<*puny<<*zog;
+
+	//puny->intro();
 	magic->polymorph(*puny);
 	magic->polymorph(*zog);
 	
+	delete zog;
 	delete puny;
 	delete magic;
 	return 0;

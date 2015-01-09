@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:31:04 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 16:27:12 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/10 00:41:05 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include <Victim.class.hpp>
 
-class Peon : Victim
+class Peon : public Victim
 {
 
 public:

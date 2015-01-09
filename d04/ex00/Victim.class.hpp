@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:31:22 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 16:48:49 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/10 00:49:33 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ public:
 	Victim();
 	Victim(std::string name);
 	Victim(Victim const & ref);
-	~Victim();
+	virtual ~Victim();
 
 	Victim &			operator=(Victim const & source);
 	void				setName(std::string value);

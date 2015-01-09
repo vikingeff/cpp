@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:33:05 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 15:56:48 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/10 00:45:55 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Sorcerer::~Sorcerer()
 
 std::ostream &		operator<<(std::ostream & o, Sorcerer const & value)
 {
-	o << "I am "<< value.getName() << ", "<< value.getTitle() <<", and I like ponies";
+	o << "I am "<< value.getName() << ", "<< value.getTitle() <<", and I like ponies"<< std::endl;
 	return o;
 }
 

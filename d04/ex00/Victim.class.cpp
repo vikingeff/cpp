@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/09 14:31:52 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/09 16:17:49 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/10 00:45:41 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ Victim::~Victim()
 {
 	Victim::_nbVictim--;
 	std::cout << "Victim "<<this->getName()<<" just died for no apparent reason !" << std::endl;
+}
+
+std::ostream &		operator<<(std::ostream & o, Victim const & value)
+{
+	o << "I am "<< value.getName() <<", and I like otters" <<std::endl;
+	return o;
 }
 
 Victim &			Victim::operator=(Victim const & source)
