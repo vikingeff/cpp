@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:24:40 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 11:23:59 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/11 15:56:41 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define MAP_CLASS_HPP
 # include <iostream>
 # include <string>
+
+# define XSIZ	65
+# define YSIZ	100
+# define HUD	5
+# define HIDDEN	10
 
 class Map
 {
@@ -32,12 +37,13 @@ public:
 	int 				getHidden() const;
 	void				setHud(int value);
 	int 				getHud() const;
-	void				printmap();
+	char*				getMapline(int index);
+	void				initmap();
 	static int			getNbMap();
 
 private:
 	static int			_nbMap;
-	std::string			_map[];
+	char				_map[XSIZ][YSIZ];
 	int					_sizeX;
 	int					_sizeY;
 	int					_hidden;

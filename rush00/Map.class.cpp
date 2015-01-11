@@ -6,15 +6,11 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:24:28 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 11:35:35 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/11 15:58:44 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Map.class.hpp>
-#define XSIZ	65
-#define YSIZ	100
-#define	HUD		5
-#define	HIDDEN	10
 
 Map::Map()
 {
@@ -23,6 +19,7 @@ Map::Map()
 	this->_sizeY=YSIZ;
 	this->_hidden=HIDDEN;
 	this->_hud=HUD;
+	this->initmap();
 	std::cout << "Map Default constructor called." << std::endl;
 }
 
@@ -88,20 +85,31 @@ int 			Map::getHud() const
 	return this->_hud;
 }
 
-void			Map::printmap()
+char*			Map::getMapline(int index)
 {
+	std::cout<<this->_map[index]<<std::endl;
+	return this->_map[index];
+}
+
+void			Map::initmap()
+{
+	//char	buff[XSIZ][YSIZ];
+
 	for (int i=this->getHidden(); i< this->getSizeX(); i++)
 	{
 		for (int j=0; j<this->getSizeY(); j++)
 		{
-			if (i==this->getSizeX()-this->getHud())
-				std::cout<<"-";	
+			if (j==0)
+				this->_map[i][j]='|';	
+			else if (i==this->getSizeX()-this->getHud())
+				this->_map[i][j]='-';	
 			else
-			std::cout<<" ";
+			this->_map[i][j]=' ';
 		}
-		std::cout<<"|"<<std::endl;
+		this->_map[i][this->getSizeY()-1]='|';
 	}
-	std::cout<<std::endl;
+	//this->_map=buff;
+	//std::cout<<std::endl;
 }
 
 int				Map::Map::getNbMap()
