@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:20:45 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 10:23:40 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/11 19:41:12 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Spaceship::Spaceship()
 {
 	Spaceship::_nbSpaceship++;
-	std::cout << "Spaceship Default constructor called." << std::endl;
+	//std::cout << "Spaceship Default constructor called." << std::endl;
 }
 
 Spaceship::Spaceship(Spaceship const & ref)			:Object()
@@ -28,7 +28,7 @@ Spaceship::Spaceship(Spaceship const & ref)			:Object()
 Spaceship::~Spaceship()
 {
 	Spaceship::_nbSpaceship--;
-	std::cout << "Spaceship Destructor called." << std::endl;
+	//std::cout << "Spaceship Destructor called." << std::endl;
 }
 
 Spaceship &			Spaceship::operator=(Spaceship const & source)

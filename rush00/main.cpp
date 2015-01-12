@@ -6,14 +6,18 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:12:31 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 15:57:17 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/12 02:52:20 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Object.class.hpp>
 #include <Spaceship.class.hpp>
 #include <Map.class.hpp>
-#include <ncurses.h>
+#include <Missile.class.hpp>
+
+#define posX	25
+#define posY	15
+#define OBJZ	1024
 
 int main ()
 {
@@ -21,9 +25,11 @@ int main ()
 	Map				*game;
 	WINDOW			*win;
 	char			key;
-	int				modif=1;
+	int				counter=0;
+	int				update=0;
 
 	game = new Map();
+	game->initpop(OBJZ);
 	key = 0;
 	if ((win = initscr()) == NULL)
 		return (-1);
@@ -31,13 +37,65 @@ int main ()
 	noecho();
 	cbreak();
 	nodelay(win, TRUE);
+	vso.setPosX(posX);
+	vso.setPosY(posY);
 	//init_curses_colors();
 	//map = get_map();
 	while (1)
 	{
-		if (key=='q')
+		key = getch();
+		if (key=='p')
 			break ;
-		if (modif==1)
+		if (update == 1)
+		{
+			clear();
+			update=0;
+		}
+		if (counter>0)
+		{
+			game->updatepop();
+			game->display();
+			//calculate_new_position()
+			//mvprintw(tabo[counter-1]->getPosX(), tabo[counter-1]->getPosY()," ");
+			//mvprintw(tabo[counter-1]->getPosX()-1, tabo[counter-1]->getPosY(),"o");
+			//tabo[counter-1]->setPosX(tabo[counter-1]->getPosX()-1);
+			//tabo[0]->setOldPosX(tabo[0]->getPosX());
+			//tabo[counter-1]->setOldPosX(tabo[counter-1]->getPosX());
+			//tabo[counter-1]->setPosX(tabo[counter-1]->getPosX()-1);
+			//mvprintw(tabo[counter-1]->getOldPosX(), tabo[counter-1]->getPosY()," ");
+			//mvprintw(tabo[0]->getOldPosX(), tabo[0]->getPosY()," ");
+			
+			//clear();
+			//tabo[0]->setPosX(tabo[0]->getPosX()-1);
+
+		}
+		switch (key)
+		{
+			case 's':vso.setPosX(vso.getPosX()+1);
+				update=1;
+				break;
+			case 'z':vso.setPosX(vso.getPosX()-1);
+				//clear();
+				update=1;
+				break;
+			case 'd':vso.setPosY(vso.getPosY()+1);
+				update=1;
+				//clear();
+				break;
+			case 'q':vso.setPosY(vso.getPosY()-1);
+				update=1;
+				//clear();
+				break;
+			case ' '://tabo[counter] = new Missile(vso.getPosX()-1, vso.getPosY()+1);
+				//clear();
+				//mvprintw(tabo[0]->getPosX(), tabo[0]->getPosY(),"o");
+				//mvprintw(tabo[counter]->getPosX(), tabo[counter]->getPosY(),"o");
+				game->add(*new Missile(vso.getPosX()-1, vso.getPosY()+1));
+				counter++;
+				update=1;
+				break;
+		}
+		/*if (modif==1)
 		{
 			//printmap
 			for (int i=game->getHidden(); i< game->getSizeX(); i++)
@@ -47,17 +105,20 @@ int main ()
 				//std::cout<<game->getMapline(i);
 			}
 			modif = 0;
-		}
+		}*/
 		//std::cout<<COLS<<std::endl;
-		//addstr("test");
+			//for (int i=0; i<counter; i++)
+		mvprintw(vso.getPosX(), vso.getPosY(),"/-\\");
+		mvprintw(vso.getPosX()+1, vso.getPosY(),"\\_/");
 		refresh();
-		clear();
+		//clear();
 		//game->printmap();
-		key = getch();
 	}
 	delwin(win);
 	endwin();
-
+	//for (int i=0; i<counter; i++)
+	//	delete tabo[counter];
+	//delete tabo;
 	delete game;
 	return 0;
 }

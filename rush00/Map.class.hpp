@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:24:40 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 15:56:41 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/12 02:52:13 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define MAP_CLASS_HPP
 # include <iostream>
 # include <string>
+# include <Object.class.hpp>
+# include <Missile.class.hpp>
+# include <ncurses.h>
 
 # define XSIZ	65
 # define YSIZ	100
@@ -38,6 +41,10 @@ public:
 	void				setHud(int value);
 	int 				getHud() const;
 	char*				getMapline(int index);
+	void				initpop(int sizepop);
+	void				updatepop();
+	void				add(Missile &weapon);
+	void				display();
 	void				initmap();
 	static int			getNbMap();
 
@@ -48,6 +55,8 @@ private:
 	int					_sizeY;
 	int					_hidden;
 	int					_hud;
+	int 				_sizepop;
+	Object				**_pop;
 
 };
 

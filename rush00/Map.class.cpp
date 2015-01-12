@@ -6,20 +6,16 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/11 10:24:28 by gleger            #+#    #+#             */
-/*   Updated: 2015/01/11 15:58:44 by gleger           ###   ########.fr       */
+/*   Updated: 2015/01/12 02:52:06 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Map.class.hpp>
 
-Map::Map()
+Map::Map()			:_sizeX(XSIZ), _sizeY(YSIZ), _hidden(HIDDEN), _hud(HUD), _sizepop(0)
 {
 	Map::_nbMap++;
-	this->_sizeX=XSIZ;
-	this->_sizeY=YSIZ;
-	this->_hidden=HIDDEN;
-	this->_hud=HUD;
-	this->initmap();
+	//this->initmap();
 	std::cout << "Map Default constructor called." << std::endl;
 }
 
@@ -89,6 +85,36 @@ char*			Map::getMapline(int index)
 {
 	std::cout<<this->_map[index]<<std::endl;
 	return this->_map[index];
+}
+
+void			Map::updatepop()
+{
+	for (int i=0; i<this->_sizepop; i++)
+	{
+		this->_pop[i]->setOldPosX(this->_pop[i]->getPosX());
+		this->_pop[i]->setPosX(this->_pop[i]->getPosX()-1);
+	}
+}
+
+void			Map::add(Missile &weapon)
+{
+	this->_pop[this->_sizepop]=new Missile(weapon);
+	this->_sizepop++;
+}
+
+void			Map::initpop(int sizepop)
+{
+	this->_pop = new Object *[sizepop];
+}
+
+void			Map::display()
+{
+	for (int i=0; i<this->_sizepop; i++)
+	{
+		//this->_pop[i]->setOldPosX(this->_pop[i]->getPosX());
+		mvprintw(this->_pop[i]->getPosX(), this->_pop[i]->getPosY(),"o");
+		mvprintw(this->_pop[i]->getPosX(), this->_pop[i]->getPosY(),"o");
+	}
 }
 
 void			Map::initmap()
